@@ -1,0 +1,10 @@
+<%= form_for @post do |f| %>
+  <p>
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
+  </p>
+  <p>
+  <%= f.text_area :content,size:"100*100" %>
+  </p>
+  <p class="button"><%= f.submit %></p>
+<% end %>

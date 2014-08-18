@@ -1,0 +1,19 @@
+<% @posts.each do |post| %>
+  <article class="post">
+  <header class="post-header">
+  <span class="post-meta">
+    <span><%= post.created_at.strftime("%b %d %Y") %></span>
+  </span>
+  <h2 class="post-title"><%=post.title%></h2>
+  </header>
+  <div>
+    <% if signed_in? %>
+      <%= link_to "Edit", edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+  <section class="post-excerpt">
+  <p><%= post.content %></p>
+  </section>
+  </article>
+<% end %>
