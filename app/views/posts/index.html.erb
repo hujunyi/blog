@@ -13,7 +13,9 @@
     <% end %>
   </div>
   <section class="post-excerpt">
-  <p><%= post.content %></p>
+  <p>
+  <%= markdown(post.content) %>
+  </p>
   </section>
   </article>
 <% end %>
