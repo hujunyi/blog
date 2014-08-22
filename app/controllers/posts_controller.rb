@@ -2,7 +2,7 @@
     before_action :signed_in_user, only:[:new,:create,:edit]
     before_action :set_post, only:[:update,:edit]
     def index
-      @posts = Post.all
+      @posts = Post.order(created_at: :desc)
     end
     def new
       @post = Post.new

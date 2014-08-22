@@ -39,8 +39,6 @@ end
 gem 'unicorn'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'redcarpet'
-gem 'albino'
-gem 'nokogiri'
 gem 'pygments.rb'
 
 # Use Capistrano for deployment

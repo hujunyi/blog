@@ -87,9 +87,6 @@ td{
   margin:0 20px;
   list-style:none;
 }
-.container{
-  height:100%;
-}
 textarea{
   min-height:300px;
   min-width:500px;
