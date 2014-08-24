@@ -3,6 +3,7 @@
     before_action :set_post, only:[:update,:edit]
     def index
       @posts = Post.order(created_at: :desc)
+      @posts_decorator = PostDecorator.build_collection(@posts)
     end
     def new
       @post = Post.new
