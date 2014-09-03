@@ -1,3 +1,11 @@
+<ul class="category">
+  <li>
+  <%=link_to 'All',posts_path%>
+  </li>
+  <% @categories.each do |c|%>
+    <li><%=link_to c.name,posts_path(category_id: c.id)%></li>
+  <% end %>
+</ul>
 <% @posts_decorator.each do |post_decorator| %>
   <article class="post">
   <header class="post-header">
@@ -9,7 +17,7 @@
   <div>
     <% if signed_in? %>
       <%= link_to "Edit", edit_post_path(post_decorator.id) %>
-      <%= link_to 'Destroy', post_path(post_decorator.id), method: :delete, confirm: 'Are you sure?' %>
+      <%= link_to 'Destroy', post_path(post_decorator.id), method: :delete,data:{confirm: 'Are you sure?'},remote: true %>
     <% end %>
   </div>
   <section class="post-excerpt">
