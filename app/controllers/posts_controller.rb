@@ -1,21 +1,19 @@
   class PostsController < ApplicationController
     before_action :signed_in_user, only:[:new,:create,:edit]
     before_action :set_post, only:[:update,:edit]
+    before_action :get_categories, except: [:create,:update]
     def index
       if(params[:category_id].nil?)
         @posts = Post.order(created_at: :desc)
       else
         @posts = Post.where(category_id: params[:category_id]).order(created_at: :desc)
       end
-      @categories = Category.all
       @posts_decorator = PostDecorator.build_collection(@posts)
     end
     def new
       @post = Post.new
-      @categories = Category.all
     end
     def edit
-      @categories = Category.all
     end
     def create
       @post = current_user.posts.build(post_params) 
@@ -43,5 +41,8 @@
     end
     def set_post
       @post = Post.find(params[:id])
+    end
+    def get_categories
+      @categories = Category.all
     end
   end
