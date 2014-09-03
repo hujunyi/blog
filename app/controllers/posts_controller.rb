@@ -15,6 +15,7 @@
       @categories = Category.all
     end
     def edit
+      @categories = Category.all
     end
     def create
       @post = current_user.posts.build(post_params) 
