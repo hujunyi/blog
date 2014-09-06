@@ -12,11 +12,13 @@
   </head>
   <body>
     <%= render "layouts/header" %>
+    <div class="container">
     <% if signed_in? %>          
       <%= link_to "Logout", logout_path %>
     <% end %>
 
       <%= yield %>
+    </div>
     <%= render "layouts/footer" %>
   </body>
 </html>
