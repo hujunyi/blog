@@ -1,29 +1,48 @@
-<ul class="category">
-  <li>
-  <%=link_to 'All',posts_path%>
-  </li>
-  <% @categories.each do |c|%>
-    <li><%=link_to c.name,posts_path(category_id: c.id)%></li>
-  <% end %>
-</ul>
-<% @posts_decorator.each do |post_decorator| %>
-  <article class="post">
-  <header class="post-header">
-  <span class="post-meta">
-    <span><%= post_decorator.publication_date %></span>
-  </span>
-  <h2 class="post-title"><%=post_decorator.title%></h2>
-  </header>
-  <div>
-    <% if signed_in? %>
-      <%= link_to "Edit", edit_post_path(post_decorator.id) %>
-      <%= link_to 'Destroy', post_path(post_decorator.id), method: :delete,data:{confirm: 'Are you sure?'},remote: true %>
+<div class="container">
+<div class="blog-header">
+  <h1 class="blog-title">Joey's Blog</h1>
+  <p class="lead blog-description">I am currently landing a developer job in the SF Bay area. So hire me!!</p>
+</div>
+<div class="row">
+  <div class="col-sm-8 blog-main">
+    <% @posts_decorator.each do |post_decorator| %>
+      <div class="blog-post">
+        <h2 class="blog-post-title"><%=post_decorator.title%></h2>
+        <p class="blog-post-meta"><%= post_decorator.publication_date %></p>
+        <% if signed_in? %>
+          <%= link_to "Edit", edit_post_path(post_decorator.id) %>
+          <%= link_to 'Destroy', post_path(post_decorator.id), method: :delete,data:{confirm: 'Are you sure?'},remote: true %>
+        <% end %>
+        <p>
+        <%= markdown(post_decorator.content) %>
+        </p>
+      </div>
     <% end %>
   </div>
-  <section class="post-excerpt">
-  <p>
-  <%= markdown(post_decorator.content) %>
-  </p>
-  </section>
-  </article>
-<% end %>
+  <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+    <div class="sidebar-module sidebar-module-inset">
+      <h4>About</h4>
+      <p> Hi, this is Joey! Born in China and living in US. I graduated from George Washington University with a Masters degree in Computer Science in May 2014. I made my decision to come to the bay area after that. A new adventure is about to begin...</p>
+    </div>
+    <div class="sidebar-module">
+      <h4>Archives</h4>
+      <ol class="list-unstyled">
+        <li>
+        <%=link_to 'All',posts_path%>
+        </li>            
+        <% @categories.each do |c|%>
+          <li><%=link_to c.name,posts_path(category_id: c.id)%></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="sidebar-module">
+      <h4>Connecting with me</h4>
+      <ol class="list-unstyled">
+        <li><a href="https://github.com/hujunyi">GitHub</a></li>
+        <li><a href="http://www.linkedin.com/pub/joey-hu/69/854/14/">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/jeffrey.hu.3956">Facebook</a></li>
+      </ol>
+    </div>
+  </div><!-- /.blog-sidebar -->
+</div>
+</div>
