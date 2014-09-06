@@ -1,5 +1,5 @@
 Blog::Application.routes.draw do
-  root "static_pages#home"
+  root "posts#index"
   get "login" => "sessions#new", :as =>"login"
   get "logout" => "sessions#destroy", :as =>"logout"
   get "signup" => "users#new", :as=> "signup"
