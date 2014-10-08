@@ -1,3 +1,0 @@
-== README
-
-This blog is set up on digital ocean with Unicorn/Nginx. I will continue adding new features to this blog for practising Ruby on Rails.
